@@ -1,0 +1,78 @@
+# For most projects, this workflow file will not need changing; you simply need
+# to commit it to your repository.
+#
+# You may wish to alter this file to override the set of languages analyzed,
+# or to provide custom queries or build logic.
+#
+# ******** NOTE ********
+# We have attempted to detect the languages in your repository. Please check
+# the `language` matrix defined below to confirm you have the correct set of
+# supported CodeQL languages.
+#
+
+- name: Ansible Playwright
+    # You may pin to the exact commit or the version.
+    # uses: aimerib/ansible-playwright@06276a1dd2ac67b31187164a21463632077ffec0
+    uses: aimerib/ansible-playwright@v2.7.7
+    with:
+      # Ansible playbook filepath
+      playbook: 
+      # Ansible Galaxy requirements filepath
+      requirements: # optional
+      # Root directory of Ansible project (defaults to current)
+      directory: # optional
+      # SSH private key used to connect to the host
+      key: # optional
+      # SSH private key used to connect to the host
+      private-key: # optional
+      # SSH User to use when connecting to host
+      user: # optional
+      # Custom content to write into hosts
+      inventory: # optional
+      # The password used for decrypting vaulted files
+      vault_password: # optional
+      # Contents of SSH known_hosts file
+      known_hosts: # optional
+      # Extra options that should be passed to ansible-playbook command
+      options: # optional
+      # Set to "true" if root is required for running your playbook
+      sudo: # optional
+      # Set to "true" if the Ansible output should not include colors (defaults to "false")
+      no_color: # optional
+            
+      steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    # Initializes the CodeQL tools for scanning.
+    - name: Initialize CodeQL
+      uses: github/codeql-action/init@v3
+      with:
+        languages: ${{ matrix.language }}
+        # If you wish to specify custom queries, you can do so here or in a config file.
+        # By default, queries listed here will override any specified in a config file.
+        # Prefix the list here with "+" to use these queries and those in the config file.
+
+        # For more details on CodeQL's query packs, refer to: https://docs.github.com/en/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/configuring-code-scanning#using-queries-in-ql-packs
+        # queries: security-extended,security-and-quality
+
+
+    # Autobuild attempts to build any compiled languages (C/C++, C#, Go, Java, or Swift).
+    # If this step fails, then you should remove it and run the build manually (see below)
+    - name: Autobuild
+      uses: github/codeql-action/autobuild@v3
+
+    # ℹ️ Command-line programs to run using the OS shell.
+    # 📚 See https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_idstepsrun
+
+    #   If the Autobuild fails above, remove it and uncomment the following three lines.
+    #   modify them (or add more) to build your code if your project, please refer to the EXAMPLE below for guidance.
+
+    # - run: |
+    #     echo "Run, Build Application using script"
+    #     ./location_of_script_within_repo/buildscript.sh
+
+    - name: Perform CodeQL Analysis
+      uses: github/codeql-action/analyze@v3
+      with:
+        category: "/language:${{matrix.language}}"
