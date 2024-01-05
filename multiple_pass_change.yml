@@ -1,0 +1,36 @@
+# Author: Pradeep Babar
+# version: 1.0
+# Date: 2024-01-05
+# Description
+# =======
+# THis playbook is for multiple device passowrd change at once
+#
+# Usage
+# ======
+#  $ ansible-playbook -i inventory multiple_pass_change.yml -e "hostlist=cisco_device_host_ip" "-u=root" -k -K
+#  -k, --ask-pass        ask for connection password (ssh)
+#  -K, --ask-become-pass ask for privilege escalation password
+
+
+- hosts: '{{ hostlist }}'
+  connection: local
+  become: yes
+  become_method: su
+  become_user: root
+
+
+  vars_prompt:
+    - name: username
+      prompt: "Enter cisco lab username"
+      private: no
+    - name: password
+      prompt: "Enter New password to change"
+
+
+  tasks:
+ 
+    - name: Changing  password for user {{ username }}
+      ansible.builtin.user:
+        name: "{{ username }}"
+        update_password: always
+        password: "{{ password|password_hash('sha512') }}"
