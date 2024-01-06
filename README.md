@@ -67,8 +67,6 @@
     There is currently no intended release frequency for major and minor versions. The intended frequency of patch versions is never, they are released for fixing issues or to address security concerns.
 
 
-[![OpenSSF Best Practices](https://www.bestpractices.dev/projects/8274/badge)](https://www.bestpractices.dev/projects/8274)
-
 
 <a href="https://www.bestpractices.dev/projects/8274"><img src="https://www.bestpractices.dev/projects/8274/badge"></a>
 
