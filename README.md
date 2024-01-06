@@ -68,5 +68,13 @@
 
 
 [![OpenSSF Best Practices](https://www.bestpractices.dev/projects/8274/badge)](https://www.bestpractices.dev/projects/8274)
-or by embedding this in your HTML:
+
+
 <a href="https://www.bestpractices.dev/projects/8274"><img src="https://www.bestpractices.dev/projects/8274/badge"></a>
+
+
+
+[![published](https://static.production.devnetcloud.com/codeexchange/assets/images/devnet-published.svg)](https://developer.cisco.com/codeexchange/github/repo/pradeepbabar31/cisco_projects)
+
+
+[![Run in Cisco Cloud IDE](https://static.production.devnetcloud.com/codeexchange/assets/images/devnet-runable-icon.svg)](https://developer.cisco.com/codeexchange/devenv/pradeepbabar31/cisco_projects/)
